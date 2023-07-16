@@ -1,5 +1,5 @@
 const { selectOptionFromDropdown } = require('./selectChain')
-const { clickButtonByXPath } = require('./selectToken');
+const { clickButtonForToken } = require('./selectToken');
 
 const puppeteer = require('puppeteer');
 
@@ -30,8 +30,8 @@ const puppeteer = require('puppeteer');
     //.chakra-input .css-s1d1f4';
     //const inputValue = '#chakra-modal-\:r1j\: > div:nth-child(2) > input';
     //const modalXPath = '/html/body/div[7]/div[3]/div';
-    await clickButtonByXPath(page, buttonXPath1, inputValue, 'WBTC');
-    await clickButtonByXPath(page, buttonXPath2, inputValue, 'USDC');
+    await clickButtonForToken(page, buttonXPath1, inputValue, 'WBTC');
+    await clickButtonForToken(page, buttonXPath2, inputValue, 'USDC');
     await page.type(".css-79elbk",'12'); // being written to eth inte saanam, ithum xpath vekkendi avrum
 // cater to my usecase
 // await page.waitForNavigation();
