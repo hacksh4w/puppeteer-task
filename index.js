@@ -1,4 +1,39 @@
+const { clickButtonByXPath } = require('./clickButtonByXpath');
 const puppeteer = require('puppeteer');
+
+async function selectOptionFromDropdown(page, dropdownClass, optionValue) {
+  const parentDiv = await page.$(dropdownClass);
+  if (parentDiv) {
+    const inputElement = await parentDiv.$('input');
+    if (inputElement) {
+      await inputElement.focus();
+      await inputElement.type(optionValue);
+      await inputElement.press('Enter');
+      console.log(`Selected "${optionValue}" from the dropdown.`);
+      await page.screenshot({ path: `${optionValue}.png` });
+    } else {
+      console.error('Input field not found within the parent div.');
+    }
+  } else {
+    console.error(`Parent div with class ${dropdownClass} not found.`);
+  }
+}
+
+// async function selectBOptionFromDropdown(page, dropdownClass, optionValue) {
+//   const parentDiv = await page.$(dropdownClass);
+//   if (parentDiv) {
+//     const buttonElement = await parentDiv.$('button');
+//     if (buttonElement) {
+//       await buttonElement.click();
+//       console.log(`Clicked on the button.`);
+//       await page.screenshot({ path: 'button.png' });
+//     } else {
+//       console.error('Button element not found within the parent div.');
+//     }
+//   } else {
+//     console.error(`Parent div with class ${dropdownClass} not found.`);
+//   }
+// }
 
 (async () => {
   try {
@@ -8,44 +43,39 @@ const puppeteer = require('puppeteer');
         height: 1080,
       },
       args: ['--disable-web-security', '--ignore-certificate-errors'],
-    }); // Launches a headless Chrome browser
+    });
 
     const page = await browser.newPage();
-
-    // Set user agent to replicate Brave on Windows 11
-    // Cloudflare easily detects automation/bots used via Puppeteer
-    // Simulating the browser behavior for that website helps bypass this problem
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 OPR/77.0.4054.275 (Edition avast-2021-06-06)');
-
     await page.goto('http://swap.defillama.com/');
-    await page.click('.css-ern9ru')
+
+    await page.click('.css-ern9ru');
     await new Promise(resolve => setTimeout(resolve, 3000));
-    await page.screenshot({ path: 'Chain dropdown.png' });
-    const chainValue = 'Arbitrum';  //Arbitrum One no longer exists  && add error handling if not found
-    const sellValue = 10;
-    const sellToken = WBTC;
-    const buyToken = USDC; //wait for right side element
-        // Find the parent div that contains the desired option text
-    const parentDiv = await page.$('.css-ern9ru');
-    if (parentDiv) {
-      // Find the input element within the parent div
-      const inputElement = await parentDiv.$('input');
 
-      if (inputElement) {
-        // Focus the input element
-        await inputElement.focus();
-        // Type the option value & Press Enter key to select the option
-        await inputElement.type(chainValue);
-        await inputElement.press('Enter');
+    await selectOptionFromDropdown(page, '.css-ern9ru', 'Arbitrum'); //Chain selection
+    
+    const buttonXPath1 = '/html/body/div[1]/div/div/div[2]/main/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/button';
+    const buttonXPath2 = '/html/body/div[1]/div/div/div[2]/main/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/button';
+    const inputXpath = '/html/body/div[7]/div[3]/div/section/div[2]/input';
+    const modalXPath = '/html/body/div[7]/div[3]/div';
+    //await selectBOptionFromDropdown(page,'.css-1k491an', 'WBTC'); // Sell Token Selection
+    //vendannu thonunnu    await page.type("#usernameSignIn", process.env.EXPLARA_EMAIL);
+    //await selectBOptionFromDropdown(page,'.css-' , 'WBTC'); // Buy Token Selection
+    await clickButtonByXPath(page, buttonXPath1, inputXpath, 'WTBC');
+    await clickButtonByXPath(page, buttonXPath2, inputXpath, 'USDC');
+    await page.type(".css-79elbk",'12'); // being written to eth inte saanam, ithum xpath vekkendi avrum
+// cater to ur usecase
+// await page.waitForNavigation();
 
-        console.log(`Selected "${chainValue}" from the dropdown.`);
-        await page.screenshot({ path: 'Arbitrum.png' });
-      } else {
-        console.error('Input field not found within the parent div.');
-      }
-    } else {
-      console.error('Parent div with class css-ern9ru not found.');
-    }
+// await page.waitForSelector("#product");
+// await page.click("#product");
+await page.screenshot({ path: 'after.png' });
+    await browser.close();
+  } catch (error) {
+    console.error('An error occurred:', error);
+  }
+})();
+
 
     // Repeating process => make this oop & SOLID 
     // Find the option in chain dropdown by its value attribute
@@ -62,11 +92,6 @@ const puppeteer = require('puppeteer');
    // await page.click('css-ern9ru');
 
  //   console.log(`Selected "${chainValue}" from the dropdown.`);
-    await browser.close();
-  } catch (error) {
-    console.error('An error occurred:', error);
-  }
-})();
 
 
 //  put this write after .gotopage
