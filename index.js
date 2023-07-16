@@ -1,5 +1,5 @@
-const { selectOptionFromDropdown } = require('./selectChainOption')
-const { clickButtonByXPath } = require('./clickButtonByXpath');
+const { selectOptionFromDropdown } = require('./selectChain')
+const { clickButtonByXPath } = require('./selectToken');
 
 const puppeteer = require('puppeteer');
 
