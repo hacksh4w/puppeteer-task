@@ -1,43 +1,12 @@
+const { selectOptionFromDropdown } = require('./selectChainOption')
 const { clickButtonByXPath } = require('./clickButtonByXpath');
+
 const puppeteer = require('puppeteer');
-
-async function selectOptionFromDropdown(page, dropdownClass, optionValue) {
-  const parentDiv = await page.$(dropdownClass);
-  if (parentDiv) {
-    const inputElement = await parentDiv.$('input');
-    if (inputElement) {
-      await inputElement.focus();
-      await inputElement.type(optionValue);
-      await inputElement.press('Enter');
-      console.log(`Selected "${optionValue}" from the dropdown.`);
-      await page.screenshot({ path: `${optionValue}.png` });
-    } else {
-      console.error('Input field not found within the parent div.');
-    }
-  } else {
-    console.error(`Parent div with class ${dropdownClass} not found.`);
-  }
-}  
-
-// async function selectBOptionFromDropdown(page, dropdownClass, optionValue) {
-//   const parentDiv = await page.$(dropdownClass);
-//   if (parentDiv) {
-//     const buttonElement = await parentDiv.$('button');
-//     if (buttonElement) {
-//       await buttonElement.click();
-//       console.log(`Clicked on the button.`);
-//       await page.screenshot({ path: 'button.png' });
-//     } else {
-//       console.error('Button element not found within the parent div.');
-//     }
-//   } else {
-//     console.error(`Parent div with class ${dropdownClass} not found.`);
-//   }
-// }
 
 (async () => {
   try {
     const browser = await puppeteer.launch({
+      headless : "new" ,
       defaultViewport: {
         width: 1920,
         height: 1080,
@@ -68,7 +37,7 @@ async function selectOptionFromDropdown(page, dropdownClass, optionValue) {
     await clickButtonByXPath(page, buttonXPath1, inputValue, 'WTBC');
     await clickButtonByXPath(page, buttonXPath2, inputValue, 'USDC');
     await page.type(".css-79elbk",'12'); // being written to eth inte saanam, ithum xpath vekkendi avrum
-// cater to ur usecase
+// cater to my usecase
 // await page.waitForNavigation();
 
 // await page.waitForSelector("#product");
