@@ -17,7 +17,7 @@ async function selectOptionFromDropdown(page, dropdownClass, optionValue) {
   } else {
     console.error(`Parent div with class ${dropdownClass} not found.`);
   }
-}
+}  
 
 // async function selectBOptionFromDropdown(page, dropdownClass, optionValue) {
 //   const parentDiv = await page.$(dropdownClass);
@@ -56,13 +56,17 @@ async function selectOptionFromDropdown(page, dropdownClass, optionValue) {
     
     const buttonXPath1 = '/html/body/div[1]/div/div/div[2]/main/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/button';
     const buttonXPath2 = '/html/body/div[1]/div/div/div[2]/main/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/button';
-    const inputXpath = '/html/body/div[7]/div[3]/div/section/div[2]/input';
-    const modalXPath = '/html/body/div[7]/div[3]/div';
+    const inputValue = '.chakra-modal__content-container .css-s1d1f4'; // u need to use query selector nad console log bro
+    //*[@id="chakra-modal-:r1j:"]/div[2]/input';
+    //.chakra-input .css-s1d1f4';
+    //const inputValue = '#chakra-modal-\:r1j\: > div:nth-child(2) > input';
+    //const modalXPath = '/html/body/div[7]/div[3]/div';
+    //const modalXPath = '/html/body/div[7]/div[3]/div';
     //await selectBOptionFromDropdown(page,'.css-1k491an', 'WBTC'); // Sell Token Selection
     //vendannu thonunnu    await page.type("#usernameSignIn", process.env.EXPLARA_EMAIL);
     //await selectBOptionFromDropdown(page,'.css-' , 'WBTC'); // Buy Token Selection
-    await clickButtonByXPath(page, buttonXPath1, inputXpath, 'WTBC');
-    await clickButtonByXPath(page, buttonXPath2, inputXpath, 'USDC');
+    await clickButtonByXPath(page, buttonXPath1, inputValue, 'WTBC');
+    await clickButtonByXPath(page, buttonXPath2, inputValue, 'USDC');
     await page.type(".css-79elbk",'12'); // being written to eth inte saanam, ithum xpath vekkendi avrum
 // cater to ur usecase
 // await page.waitForNavigation();

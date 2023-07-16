@@ -1,6 +1,6 @@
 const checkModalExistence = require('./checkModalExistence');
 
-async function clickButtonByXPath(page, buttonXPath, inputXPath, optionValue) {
+async function clickButtonByXPath(page, buttonXPath, inputValue, optionValue) {
   try {
     await page.waitForXPath(buttonXPath);
     const buttonElement = await page.$x(buttonXPath);
@@ -18,7 +18,9 @@ async function clickButtonByXPath(page, buttonXPath, inputXPath, optionValue) {
         await page.waitForSelector(modalSelector);
         const modalElement = await page.$(modalSelector);
         if (modalElement) {
-          const inputElement = await modalElement.$x(inputXPath);
+            await page.waitForTimeout(3000);
+          const inputElement = await modalElement.$(inputValue);
+          await page.screenshot({ path: 'modals.png' });
           if (inputElement.length > 0) {
             await page.screenshot({ path: 'openmodal.png' });
             await inputElement[0].focus();
@@ -31,16 +33,17 @@ async function clickButtonByXPath(page, buttonXPath, inputXPath, optionValue) {
             console.log(`Selected "${optionValue}" from the dropdown.`);
             await page.screenshot({ path: `${optionValue}.png` });
           } else {
-            throw new Error(`Input element not found for XPath: ${inputXPath}`);
+            console.error(`Input element not found for XPath: ${inputValue}`);
           }
         } else {
-          throw new Error(`Modal element not found for selector: ${modalSelector}`);
+            console.error(`Modal element not found for selector: ${modalSelector}`);
         }
       } else {
         console.error(`Modal element does not exist.`);
       }
     } else {
-      throw new Error(`Button element not found for XPath: ${buttonXPath}`);
+        console.error(`Button element not found for XPath: ${buttonXPath}`);
+      //throw new Error(`Button element not found for XPath: ${buttonXPath}`);
     }
   } catch (error) {
     console.error('An error occurred:', error);
