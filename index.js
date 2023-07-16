@@ -30,11 +30,7 @@ const puppeteer = require('puppeteer');
     //.chakra-input .css-s1d1f4';
     //const inputValue = '#chakra-modal-\:r1j\: > div:nth-child(2) > input';
     //const modalXPath = '/html/body/div[7]/div[3]/div';
-    //const modalXPath = '/html/body/div[7]/div[3]/div';
-    //await selectBOptionFromDropdown(page,'.css-1k491an', 'WBTC'); // Sell Token Selection
-    //vendannu thonunnu    await page.type("#usernameSignIn", process.env.EXPLARA_EMAIL);
-    //await selectBOptionFromDropdown(page,'.css-' , 'WBTC'); // Buy Token Selection
-    await clickButtonByXPath(page, buttonXPath1, inputValue, 'WTBC');
+    await clickButtonByXPath(page, buttonXPath1, inputValue, 'WBTC');
     await clickButtonByXPath(page, buttonXPath2, inputValue, 'USDC');
     await page.type(".css-79elbk",'12'); // being written to eth inte saanam, ithum xpath vekkendi avrum
 // cater to my usecase

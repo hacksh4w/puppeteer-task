@@ -27,7 +27,7 @@ async function clickButtonByXPath(page, buttonXPath, inputValue, optionValue) {
                 await inputElement.type(optionValue);
                 await page.screenshot({ path: 'typemodal.png' });
                 console.log('Written');
-                await inputElement.press('Enter');
+                await inputElement.press('Enter');  // its not clicking the first result =>sc-b49748d5-3 cjxQGj
                 await page.screenshot({ path: 'entermodal.png' });
                 console.log(`Selected "${optionValue}" from the dropdown.`);
                 await page.screenshot({ path: `${optionValue}.png` });
@@ -37,30 +37,6 @@ async function clickButtonByXPath(page, buttonXPath, inputValue, optionValue) {
             } else {
             console.error(`Modal element not found for selector: ${modalSelector}`);
             }
-          
-        //await elements[0].click();
-       {/*} await page.waitForNavigation();
-        console.log("reached input list");
-          const inputElement = await modalElement.$(inputValue);
-          await page.screenshot({ path: 'modals.png' });
-          if (inputElement.length > 0) {
-          //if (inputElement.length > 0) {
-            await page.screenshot({ path: 'openmodal.png' });
-            await inputElement[0].focus();
-            console.log(`Element focused.`);
-            await inputElement[0].type(optionValue);
-            await page.screenshot({ path: 'typemodal.png' });
-            console.log('Written');
-            await inputElement[0].press('Enter');
-            await page.screenshot({ path: 'entermodal.png' });
-            console.log(`Selected "${optionValue}" from the dropdown.`);
-            await page.screenshot({ path: `${optionValue}.png` });
-          } else {
-            console.error(`Input element not found for XPath: ${inputValue}`);
-          } 
-        } else {
-            console.error(`Modal element not found for selector: ${modalSelector}`);
-        } */}
       } else {
         console.error(`Modal element does not exist.`);
       } 
