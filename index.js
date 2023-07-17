@@ -31,35 +31,28 @@ const puppeteer = require('puppeteer');
 
     const buttonXPath1 = '/html/body/div[1]/div/div/div[2]/main/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/button';
     const buttonXPath2 = '/html/body/div[1]/div/div/div[2]/main/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/button';
-    const inputValue = '.chakra-modal__content-container .css-s1d1f4'; // u need to use query selector nad console log bro
-    //*[@id="chakra-modal-:r1j:"]/div[2]/input';
-    //.chakra-input .css-s1d1f4';
-    //const inputValue = '#chakra-modal-\:r1j\: > div:nth-child(2) > input';
-    //const modalXPath = '/html/body/div[7]/div[3]/div';
+    const inputValue = '.chakra-modal__content-container .css-s1d1f4'; 
     await selectToken(page, buttonXPath1, inputValue, 'WBTC');
-    await selectToken(page, buttonXPath2, inputValue, 'USDC'); //it's clicking on USDC.e not USDC (search and compare vendi varum)
-   
-    
-    // cater to my usecase
-    // const navigationPromise = page.waitForNavigation();  //best practice
-    // await page.waitForSelector("#product");
-    // await page.click("#product");
-    //await new Promise(resolve => setTimeout(resolve, 3000));
+    await selectToken(page, buttonXPath2, inputValue, 'USDC'); 
+
+    // Checking for swap option div
     const divSelector = '.sc-bb167634-2';
     const divExists = await checkDivExistence(page, divSelector);
     if (divExists) {
       console.log('Swap exists');
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      //time delay for all swapping options to be computed
+      await new Promise(resolve => setTimeout(resolve, 3000));
       await page.screenshot({ path: 'swapappears.png' });
-      try { await select2ndSwap(page, divSelector);
-      } catch(err) {
-        console.log("2ndswap issue", err);
-      }
+      //fn to choose 2nd swap option
+      await select2ndSwap(page, divSelector);
     } else {
       console.log('Swap dont exist maboi');
     }
-   
+  
     await page.screenshot({ path: 'theend.png' });
+    // screen shot to verify if 2nd option is always chosen
+    // await new Promise(resolve => setTimeout(resolve, 23000));
+    // await page.screenshot({ path: 'justend.png' });
     await browser.close();
   } catch (error) {
     console.error('An error occurred:', error);
