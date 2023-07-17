@@ -1,7 +1,7 @@
 # **<div align="center">Puppeteer Task by Mrinalini Nair Ani</div>**  
 <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"><img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E">
 
-## STATUS : WIP
+## STATUS : WIP (To apply : SOLID Principles)
 Site : http://swap.defillama.com/
 
 ## Steps 
