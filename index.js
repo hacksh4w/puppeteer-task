@@ -47,14 +47,14 @@ const puppeteer = require('puppeteer');
       console.log('Swap exists');
       //time delay for all swapping options to be computed
       await new Promise(resolve => setTimeout(resolve, 3000));
-      await page.screenshot({ path: 'imgchecks/swapappears.png' });
+      // await page.screenshot({ path: 'imgchecks/swapappears.png' });
       //fn to choose 2nd swap option
       await select2ndSwap(page, swapSelector);
     } else {
       console.log('Swap dont exist maboi');
     }
   
-    await page.screenshot({ path: 'imgchecks/End.png' });
+    // await page.screenshot({ path: 'imgchecks/End.png' });
     // screen shot to verify if 2nd option is always chosen
     // await new Promise(resolve => setTimeout(resolve, 23000));
     // await page.screenshot({ path: 'imgchecks/justend.png' }); 

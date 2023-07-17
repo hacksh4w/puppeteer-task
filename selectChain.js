@@ -7,7 +7,7 @@ async function selectDropdownOption(page, dropdownClass, optionValue) {
         await inputElement.type(optionValue);
         await inputElement.press('Enter');
         console.log(`Selected "${optionValue}" from the dropdown.`);
-        await page.screenshot(`path : imgchecks/Arbitrum.png`);
+        // await page.screenshot(`path : imgchecks/Arbitrum.png`);
       } else {
         console.error('Input field not found within the parent div.');
       }

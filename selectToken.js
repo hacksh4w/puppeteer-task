@@ -14,7 +14,7 @@ async function selectToken(page, buttonXPath, inputValue, optionValue) {
       //Select token steps to execute, if modal open
       if (modalExists) {
         console.log('Modal element exists.');
-        await page.screenshot({ path: 'imgchecks/modalvanne.png' });
+        // await page.screenshot({ path: 'imgchecks/modalvanne.png' });
         //wait for modal
         await page.waitForSelector(modalSelector,  { visible: true } );
         const modalElement = await page.$(modalSelector);
@@ -28,17 +28,17 @@ async function selectToken(page, buttonXPath, inputValue, optionValue) {
                 console.log(`Element focused.`);
                 await inputElement.type(optionValue);
                 console.log('Written');
-                await page.screenshot({ path: 'imgchecks/typemodal.png' });
+               // await page.screenshot({ path: 'imgchecks/typemodal.png' });
              // await inputElement.press('Enter');  
                 await page.screenshot({ path: 'imgchecks/entermodal.png' });
-                await page.screenshot({ path: 'imgchecks/typedinmodal.png' });
+                // await page.screenshot({ path: 'imgchecks/typedinmodal.png' });
                 const resultDiv = await modalElement.$('.sc-b49748d5-3');
                 //await page.waitForSelector(resultDiv,  { visible: true } );
                 await resultDiv.click(); 
                 //await inputElement.click('Enter'); 
-                await page.screenshot({ path: 'imgchecks/keypressedinmodal.png' });
+                // await page.screenshot({ path: 'imgchecks/keypressedinmodal.png' });
                 console.log(`Selected "${optionValue}" from the dropdown.`);
-                await page.screenshot({ path: `imgchecks/${optionValue}.png` });
+                // await page.screenshot({ path: `imgchecks/${optionValue}.png` });
             } else {
                 console.error(`Input element not found within the modal.`);
             }
