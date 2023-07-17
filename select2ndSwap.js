@@ -1,14 +1,28 @@
-{/* we need modal check fn first */}
-//this is not a modal, soo saanam undo ennu check cheyyanam, idk the word
-async function select2ndSwap(page) {
-    
-    const modalSelector = '.sc-bb167634-2';
-    const modalExists = await checkModalExistence(page, modalSelector);
-    if(modalExists) {
-
-    } else {
-        console.log("Modal doesn't exist")
-    }
+// async function select2ndSwap(page, divSelector) {
+//     // Wait for the second RouteWrapper element to load within the div
+//     await page.waitForSelector(`${divSelector} .RouteWrapper:nth-child(2)`, { visible: true });
+  
+//     // Get the second RouteWrapper element
+//     const routeWrapperElement = await page.$(`${divSelector} .RouteWrapper:nth-child(2)`);
+//     const routeWrapperExists = !!routeWrapperElement;
+  
+//     if (routeWrapperExists) {
+//       console.log('Selected the second RouteWrapper element.');
+//       // Perform actions with the second RouteWrapper element
+//     } else {
+//       console.log('The second RouteWrapper element is not available.');
+//     }
+//   }
+  
+//   module.exports = { select2ndSwap };
+async function select2ndSwap(page, divSelector) {
+    // Wait for the second RouteWrapper element to load within the div
+    await page.waitForSelector(`${divSelector} .RouteWrapper:nth-child(2)`, { visible: true });
+  
+    // Click on the second RouteWrapper element
+    await page.click(`${divSelector} .RouteWrapper:nth-child(2)`);
+  
+    console.log('Clicked on the second RouteWrapper element.');
   }
   
-  module.exports = select2ndSwap;
+  module.exports = { select2ndSwap };

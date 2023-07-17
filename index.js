@@ -1,7 +1,7 @@
 const { selectOptionFromDropdown } = require('./selectChain')
 const { selectToken } = require('./selectToken');
 const { select2ndSwap } = require('./select2ndSwap');
-
+const { checkDivExistence } = require('./divExists');
 const puppeteer = require('puppeteer');
 
 (async () => {
@@ -44,7 +44,15 @@ const puppeteer = require('puppeteer');
     // await page.waitForNavigation();
     // await page.waitForSelector("#product");
     // await page.click("#product");
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    //await new Promise(resolve => setTimeout(resolve, 3000));
+    const divSelector = '.sc-bb167634-2';
+    const divExists = await checkDivExistence(page, divSelector);
+    if (divExists) {
+      console.log('Swap exists');
+      await select2ndSwap(page, divSelector);
+    } else {
+      console.log('Swap dont exist maboi');
+    }
     await page.screenshot({ path: 'swapappears.png' });
     await page.screenshot({ path: 'theend.png' });
     await browser.close();
