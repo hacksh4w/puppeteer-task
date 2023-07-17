@@ -18,4 +18,4 @@ b. Fill the form
 
 ## Assuptions
 - "Arbitrum One" is the same as "Arbitrum". (Arbitrum One was removed as a chain option).
-- The use of `useUserAgent` is allowed to bypass Cloudfare Bot Detection
+- The use of `setUserAgent` is allowed to bypass Cloudfare Bot Detection
