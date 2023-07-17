@@ -37,6 +37,7 @@ const puppeteer = require('puppeteer');
 
     // Checking for swap option div
     const divSelector = '.sc-bb167634-2';
+    const swapSelector = 'div.sc-d413ea6e-0';
     const divExists = await checkDivExistence(page, divSelector);
     if (divExists) {
       console.log('Swap exists');
@@ -44,7 +45,7 @@ const puppeteer = require('puppeteer');
       await new Promise(resolve => setTimeout(resolve, 3000));
       await page.screenshot({ path: 'swapappears.png' });
       //fn to choose 2nd swap option
-      await select2ndSwap(page, divSelector);
+      await select2ndSwap(page, swapSelector);
     } else {
       console.log('Swap dont exist maboi');
     }
@@ -53,7 +54,8 @@ const puppeteer = require('puppeteer');
     // screen shot to verify if 2nd option is always chosen
     // await new Promise(resolve => setTimeout(resolve, 23000));
     // await page.screenshot({ path: 'justend.png' });
-    await browser.close();
+    // await browser.close();
+    
   } catch (error) {
     console.error('An error occurred:', error);
   }
