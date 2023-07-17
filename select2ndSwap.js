@@ -15,14 +15,15 @@
 //   }
   
 //   module.exports = { select2ndSwap };
-async function select2ndSwap(page, divSelector) {
-    // Wait for the second RouteWrapper element to load within the div
-    await page.waitForSelector(`${divSelector} .RouteWrapper:nth-child(2)`, { visible: true });
+async function select2ndSwap(page, divSelector) { //sc-bb167634-2 gyEpxF
+    // Wait for the second RouteWrapper element to load within the div 
+    //await page.waitForSelector(`${divSelector}:nth-child(1)`, { visible: true });
+    await page.waitForSelector(`${divSelector} .RouteWrapper`, { visible: true });
   
     // Click on the second RouteWrapper element
-    await page.click(`${divSelector} .RouteWrapper:nth-child(2)`);
+    await page.click(`${divSelector} .RouteWrapper`);
   
     console.log('Clicked on the second RouteWrapper element.');
-  }
-  
+
+}
   module.exports = { select2ndSwap };

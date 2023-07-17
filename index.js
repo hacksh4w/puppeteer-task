@@ -41,7 +41,7 @@ const puppeteer = require('puppeteer');
    
     
     // cater to my usecase
-    // await page.waitForNavigation();
+    // const navigationPromise = page.waitForNavigation();  //best practice
     // await page.waitForSelector("#product");
     // await page.click("#product");
     //await new Promise(resolve => setTimeout(resolve, 3000));
@@ -49,11 +49,16 @@ const puppeteer = require('puppeteer');
     const divExists = await checkDivExistence(page, divSelector);
     if (divExists) {
       console.log('Swap exists');
-      await select2ndSwap(page, divSelector);
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      await page.screenshot({ path: 'swapappears.png' });
+      try { await select2ndSwap(page, divSelector);
+      } catch(err) {
+        console.log("2ndswap issue", err);
+      }
     } else {
       console.log('Swap dont exist maboi');
     }
-    await page.screenshot({ path: 'swapappears.png' });
+   
     await page.screenshot({ path: 'theend.png' });
     await browser.close();
   } catch (error) {
