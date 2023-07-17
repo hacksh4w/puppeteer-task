@@ -6,9 +6,9 @@ Site : http://swap.defillama.com/
 ## Steps 
 - [x] 1. Create a new project using Javascript/Typescript in NodeJS
 - [x] 2. Integrate puppeteer library
-- [x] 3. Use puppeteer to
-- a. Launch headful browser and go t o swap.defillama.com.
-- b. Fill the form
+3. Use puppeteer to
+- [x] a. Launch headful browser and go t o swap.defillama.com.
+- [x] b. Fill the form
   - [x] Enter "Arbitrum One" in the "chain" field
   - [x] Enter "12" in "You Sell" field
   - [x] Enter "WBTC" (Wrapped BTC) in the "select token" field on right hand side to "You Sell" field
