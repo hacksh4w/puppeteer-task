@@ -55,7 +55,19 @@ const puppeteer = require('puppeteer');
     // await new Promise(resolve => setTimeout(resolve, 23000));
     // await page.screenshot({ path: 'justend.png' });
     // await browser.close();
-    
+    await new Promise(resolve => {
+      process.stdin.setRawMode(true);
+      process.stdin.resume();
+      process.stdin.setEncoding('utf8');
+  
+      process.stdin.on('data', (key) => {
+        if (key === ' ') {
+          browser.close();
+          process.exit(0);
+        }
+      });
+    });
+    await page.screenshot({ path: 'justend.png' });
   } catch (error) {
     console.error('An error occurred:', error);
   }
