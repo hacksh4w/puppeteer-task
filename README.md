@@ -1,5 +1,4 @@
-# **<div align="center">puppeteer-task</div>**  
- by Mrinalini Nair Ani
+# **<div align="center">Puppeteer Task by Mrinalini Nair Ani</div>**  
 
 Site : http://swap.defillama.com/
 
