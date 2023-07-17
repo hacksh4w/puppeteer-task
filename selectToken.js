@@ -1,6 +1,6 @@
 const checkModalExistence = require('./checkModalExistence');
 
-async function clickButtonForToken(page, buttonXPath, inputValue, optionValue) {
+async function selectToken(page, buttonXPath, inputValue, optionValue) {
   try {
     await page.waitForXPath(buttonXPath);
     const buttonElement = await page.$x(buttonXPath);
@@ -29,7 +29,6 @@ async function clickButtonForToken(page, buttonXPath, inputValue, optionValue) {
                 const resultDiv = await modalElement.$('.sc-b49748d5-3');
                 //await page.waitForSelector(resultDiv,  { visible: true } );
                 await resultDiv.click(); //seems to be working for the 2nd entry, but i need to find correct classname; this clasname is for WBTC but USDC seems to be working
-                //is the search actually working?
                 //await inputElement.click('Enter');  // its not clicking the first result =>sc-b49748d5-3 cjxQGj
                 await page.screenshot({ path: 'keypressedinmodal.png' });
                 console.log(`Selected "${optionValue}" from the dropdown.`);
@@ -48,8 +47,8 @@ async function clickButtonForToken(page, buttonXPath, inputValue, optionValue) {
       //throw new Error(`Button element not found for XPath: ${buttonXPath}`);
     }
   } catch (error) {
-    console.error('An error occurred:', error);
+    console.error(error);
   }
 }
 
-module.exports = { clickButtonForToken };
+module.exports = { selectToken };

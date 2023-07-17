@@ -1,5 +1,5 @@
 const { selectOptionFromDropdown } = require('./selectChain')
-const { clickButtonForToken } = require('./selectToken');
+const { selectToken } = require('./selectToken');
 
 const puppeteer = require('puppeteer');
 
@@ -30,49 +30,18 @@ const puppeteer = require('puppeteer');
     //.chakra-input .css-s1d1f4';
     //const inputValue = '#chakra-modal-\:r1j\: > div:nth-child(2) > input';
     //const modalXPath = '/html/body/div[7]/div[3]/div';
-    await clickButtonForToken(page, buttonXPath1, inputValue, 'WBTC');
-    await clickButtonForToken(page, buttonXPath2, inputValue, 'USDC');
+    await selectToken(page, buttonXPath1, inputValue, 'WBTC');
+    await selectToken(page, buttonXPath2, inputValue, 'USDC');
     await page.type(".css-79elbk",'12'); // being written to eth inte saanam, ithum xpath vekkendi avrum
-// cater to my usecase
-// await page.waitForNavigation();
+    
+    // cater to my usecase
+    // await page.waitForNavigation();
+    // await page.waitForSelector("#product");
+    // await page.click("#product");
 
-// await page.waitForSelector("#product");
-// await page.click("#product");
 await page.screenshot({ path: 'after.png' });
     await browser.close();
   } catch (error) {
     console.error('An error occurred:', error);
   }
 })();
-
-
-    // Repeating process => make this oop & SOLID 
-    // Find the option in chain dropdown by its value attribute
- //   const inputSelector = 'input#react-select-2-input';
-   // const chainValue = 'Arbitrum One';
-
-    // Click on the input field to focus it
- //   await page.click(inputSelector);
-    // Type the option value into the input field
- //   await page.type(inputSelector, chainValue);
-    // Wait for the dropdown options to appear
- //   await page.waitForSelector('css-ern9ru', { timeout : 5000 });
-    // Click on the first option that matches the value
-   // await page.click('css-ern9ru');
-
- //   console.log(`Selected "${chainValue}" from the dropdown.`);
-
-
-//  put this write after .gotopage
-// Code to deal with cloudfare captchaa
-//  page.on('response', async (response) => {
-//   const status = response.status();
-//   if (status >= 400) {
-//     const errorText = await response.text();
-//     if (errorText.includes('Attention Required! | Cloudflare')) {
-//       // Handle Cloudflare captcha  > Dk what ti put here tho
-//       console.log('Cloudflare captcha encountered. Please solve it manually.');
-//       // Perform necessary actions to solve the captcha
-//     }
-//   }
-// });
