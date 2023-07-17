@@ -16,6 +16,6 @@ b. Fill the form
   - [ ] Select the second option in this section
 - [ ] 4. Leave the browser window open. This is the end of the program.
 
-## Assuptions
+## Assumptions
 - "Arbitrum One" is the same as "Arbitrum". (Arbitrum One was removed as a chain option).
 - The use of `setUserAgent` is allowed to bypass Cloudfare Bot Detection
