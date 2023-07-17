@@ -2,13 +2,14 @@
 <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"><img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E">
 
 ## STATUS : WIP (To apply : SOLID Principles)
-Site : http://swap.defillama.com/
+
+### Command to run script : `node index.js`
 
 ## Steps 
 - [x] 1. Create a new project using Javascript/Typescript in NodeJS
 - [x] 2. Integrate puppeteer library
 - [x] 3. Use puppeteer to
-- [x] a. Launch headful browser and go t o swap.defillama.com.
+- [x] a. Launch headful browser and go to `http://swap.defillama.com/`
 - [x] b. Fill the form
   - [x] Enter "Arbitrum One" in the "chain" field
   - [x] Enter "12" in "You Sell" field
