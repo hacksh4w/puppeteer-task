@@ -7,7 +7,7 @@ Site : http://swap.defillama.com/
 ## Steps 
 - [x] 1. Create a new project using Javascript/Typescript in NodeJS
 - [x] 2. Integrate puppeteer library
-- [ ] 3. Use puppeteer to
+- [x] 3. Use puppeteer to
 - [x] a. Launch headful browser and go t o swap.defillama.com.
 - [x] b. Fill the form
   - [x] Enter "Arbitrum One" in the "chain" field
@@ -15,7 +15,7 @@ Site : http://swap.defillama.com/
   - [x] Enter "WBTC" (Wrapped BTC) in the "select token" field on right hand side to "You Sell" field
   - [x] Enter "USDC" (USDC Coin) in the "select token" field in "You Buy" section
   - [x] Once you enter this data, a section will appear on right hand side called - "Select a route to perform a swap"
-  - [ ] Select the second option in this section
+  - [x] Select the second option in this section
 - [ ] 4. Leave the browser window open. This is the end of the program.
 
 ## Assumptions
