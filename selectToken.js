@@ -25,6 +25,9 @@ async function selectToken(page, buttonXPath, inputValue, optionValue) {
                 console.log(`Element focused.`);
                 await inputElement.type(optionValue);
                 console.log('Written');
+                await page.screenshot({ path: 'typemodal.png' });
+             //   await inputElement.press('Enter');  // its not clicking the first result =>sc-b49748d5-3 cjxQGj
+                await page.screenshot({ path: 'entermodal.png' });
                 await page.screenshot({ path: 'typedinmodal.png' });
                 const resultDiv = await modalElement.$('.sc-b49748d5-3');
                 //await page.waitForSelector(resultDiv,  { visible: true } );

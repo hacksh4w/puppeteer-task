@@ -23,6 +23,11 @@ const puppeteer = require('puppeteer');
 
     await selectOptionFromDropdown(page, '.css-ern9ru', 'Arbitrum'); //Chain selection
     
+    await page.$eval('.css-lv0ed5', (input) => {
+      input.value = ''; // Clear the existing value
+    }); 
+    await page.type('.css-lv0ed5', '12');
+
     const buttonXPath1 = '/html/body/div[1]/div/div/div[2]/main/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/button';
     const buttonXPath2 = '/html/body/div[1]/div/div/div[2]/main/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/button';
     const inputValue = '.chakra-modal__content-container .css-s1d1f4'; // u need to use query selector nad console log bro
@@ -32,7 +37,7 @@ const puppeteer = require('puppeteer');
     //const modalXPath = '/html/body/div[7]/div[3]/div';
     await selectToken(page, buttonXPath1, inputValue, 'WBTC');
     await selectToken(page, buttonXPath2, inputValue, 'USDC');
-    await page.type(".css-79elbk",'12'); // being written to eth inte saanam, ithum xpath vekkendi avrum
+   
     
     // cater to my usecase
     // await page.waitForNavigation();
