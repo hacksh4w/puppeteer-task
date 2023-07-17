@@ -57,4 +57,4 @@ async function selectToken(page, buttonXPath, inputValue, optionValue) {
   }
 }
 
-module.exports = { selectToken };
+module.exports = selectToken ;

@@ -12,4 +12,4 @@ if (divs.length >= 2) {
 
 
 }
-  module.exports = { select2ndSwap };
+  module.exports = select2ndSwap;

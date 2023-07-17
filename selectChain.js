@@ -16,4 +16,4 @@ async function selectDropdownOption(page, dropdownClass, optionValue) {
     }
   }  
 
-  module.exports = { selectDropdownOption };
+  module.exports = selectDropdownOption;
