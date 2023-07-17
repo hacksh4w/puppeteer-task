@@ -20,3 +20,7 @@ b. Fill the form
 ## Assumptions
 - "Arbitrum One" is the same as "Arbitrum". (Arbitrum One was removed as a chain option).
 - The use of `setUserAgent` is allowed to bypass Cloudfare Bot Detection
+- Code being run on Brave Browser with it's default search engine
+     `await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 OPR/77.0.4054.275 (Edition avast-2021-06-06)');` 
+- Node `v18.12.1`
+
