@@ -1,5 +1,6 @@
 const { selectOptionFromDropdown } = require('./selectChain')
 const { selectToken } = require('./selectToken');
+const { select2ndSwap } = require('./select2ndSwap');
 
 const puppeteer = require('puppeteer');
 
@@ -15,7 +16,7 @@ const puppeteer = require('puppeteer');
     });
 
     const page = await browser.newPage();
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 OPR/77.0.4054.275 (Edition avast-2021-06-06)');
+
     await page.goto('http://swap.defillama.com/');
 
     await page.click('.css-ern9ru');
@@ -36,15 +37,16 @@ const puppeteer = require('puppeteer');
     //const inputValue = '#chakra-modal-\:r1j\: > div:nth-child(2) > input';
     //const modalXPath = '/html/body/div[7]/div[3]/div';
     await selectToken(page, buttonXPath1, inputValue, 'WBTC');
-    await selectToken(page, buttonXPath2, inputValue, 'USDC');
+    await selectToken(page, buttonXPath2, inputValue, 'USDC'); //it's clicking on USDC.e not USDC (search and compare vendi varum)
    
     
     // cater to my usecase
     // await page.waitForNavigation();
     // await page.waitForSelector("#product");
     // await page.click("#product");
-
-await page.screenshot({ path: 'after.png' });
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    await page.screenshot({ path: 'swapappears.png' });
+    await page.screenshot({ path: 'theend.png' });
     await browser.close();
   } catch (error) {
     console.error('An error occurred:', error);
