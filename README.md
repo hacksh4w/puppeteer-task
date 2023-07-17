@@ -6,7 +6,7 @@ Site : http://swap.defillama.com/
 ## Steps 
 - [x] 1. Create a new project using Javascript/Typescript in NodeJS
 - [x] 2. Integrate puppeteer library
-3. Use puppeteer to
+- [ ] 3. Use puppeteer to
 - [x] a. Launch headful browser and go t o swap.defillama.com.
 - [x] b. Fill the form
   - [x] Enter "Arbitrum One" in the "chain" field
