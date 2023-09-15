@@ -1,7 +1,7 @@
 # **<div align="center">Puppeteer Task by Mrinalini Nair Ani</div>**  
 <img src="https://img.shields.io/badge/Puppeteer-40B5A4?style=for-the-badge&logo=Puppeteer&logoColor=white"><img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"><img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
 
-## STATUS : WIP (To apply : SOLID Principles)
+## STATUS : Completed
 
 ### Command to run script : `node index.js`
 
